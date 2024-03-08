@@ -1,0 +1,56 @@
+@use "../../../../node_modules/open-color/open-color" as c;
+
+.head {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  padding: calc(0.25 * var(--pico-spacing)) 0;
+  box-shadow: var(--pico-box-shadow);
+  overflow: hidden;
+  background: color-mix(
+    in srgb,
+    var(--pico-background-color) 82.5%,
+    transparent
+  );
+  backdrop-filter: blur(6px);
+}
+
+.logo {
+  box-shadow: var(--pico-box-shadow);
+  font-family: var(--heading-font-family);
+  font-size: max(20px, var(--pico-font-size));
+  border-radius: calc(1.5 * var(--pico-border-radius));
+  padding: var(--pico-nav-element-spacing-horizontal)
+    var(--pico-nav-element-spacing-vertical);
+  color: var(--pico-primary-inverse);
+  background: conic-gradient(
+    at 35% -25px,
+    c.$oc-yellow-2,
+    24%,
+    c.$oc-green-8,
+    40%,
+    c.$oc-teal-7,
+    58%,
+    c.$oc-cyan-8,
+    70%,
+    c.$oc-blue-9
+  );
+}
+
+li:has(+ .separator) {
+  padding-right: 4px;
+}
+
+.separator {
+  padding: 0;
+  margin: 0 var(--pico-spacing);
+  border-right: 1px solid var(--pico-muted-border-color);
+
+  + li {
+    padding-left: 0;
+  }
+}
+
+.controls li:last-child {
+  padding-right: 0;
+}

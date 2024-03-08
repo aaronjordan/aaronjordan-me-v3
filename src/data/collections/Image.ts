@@ -1,6 +1,4 @@
 import { CollectionConfig } from "payload/types";
-// import { renameUpload } from "../../utils/RenameUpload";
-// import convertToWebp from "../../utils/ConvertToWebp";
 
 export const Image: CollectionConfig = {
   slug: "image",
@@ -23,4 +21,7 @@ export const Image: CollectionConfig = {
     mimeTypes: ["image/*"],
   },
   admin: { useAsTitle: "name" },
+  access: {
+    read: () => true,
+  },
 };

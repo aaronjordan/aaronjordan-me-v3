@@ -1,0 +1,43 @@
+@use "sass:color";
+@use "../../node_modules/open-color/open-color" as c;
+
+/* Default light theme */
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+  // Primary color
+  --pico-text-selection-color: #{color.adjust(c.$oc-teal-6, $alpha: -0.7)};
+  --pico-primary: #{c.$oc-teal-7};
+  --pico-primary-background: #{c.$oc-teal-7};
+  --pico-primary-underline: #{color.adjust(c.$oc-teal-6, $alpha: -0.5)};
+  --pico-primary-hover: #{c.$oc-teal-9};
+  --pico-primary-hover-background: #{c.$oc-teal-6};
+  --pico-primary-focus: #{color.adjust(c.$oc-teal-6, $alpha: -0.5)};
+  --pico-primary-inverse: #fff;
+
+  // Others
+  --pico-modal-overlay-background-color: #{color.adjust(
+      c.$oc-teal-9,
+      $saturation: -60,
+      $alpha: -0.6
+    )};
+}
+
+/* Dark mode theme */
+[data-theme="dark"] {
+  // Primary color
+  --pico-text-selection-color: #{color.adjust(c.$oc-teal-6, $alpha: -0.7)};
+  --pico-primary: #{c.$oc-teal-6};
+  --pico-primary-background: #{c.$oc-teal-7};
+  --pico-primary-underline: #{color.adjust(c.$oc-teal-8, $alpha: -0.5)};
+  --pico-primary-hover: #{c.$oc-teal-4};
+  --pico-primary-hover-background: #{c.$oc-teal-6};
+  --pico-primary-focus: #{color.adjust(c.$oc-teal-9, $alpha: -0.3)};
+  --pico-primary-inverse: #fff;
+
+  // Others
+  --pico-modal-overlay-background-color: #{color.adjust(
+      c.$oc-teal-9,
+      $saturation: -60,
+      $alpha: -0.6
+    )};
+}

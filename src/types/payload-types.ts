@@ -15,6 +15,7 @@ export interface Config {
     'payload-migrations': PayloadMigration;
   };
   globals: {
+    footerLinks: FooterLink;
     navigation: Navigation;
   };
 }
@@ -56,6 +57,7 @@ export interface Chunk {
             images?:
               | {
                   image: string | Image;
+                  caption?: string | null;
                   initial?: boolean | null;
                   id?: string | null;
                 }[]
@@ -64,23 +66,34 @@ export interface Chunk {
             blockName?: string | null;
             blockType: 'carousel';
           }
+        | {
+            filename?: string | null;
+            lang: string;
+            lineNumbers?: boolean | null;
+            snippet?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'code-snippet';
+          }
+        | {
+            heading?:
+              | {
+                  content: string;
+                  id?: string | null;
+                }[]
+              | null;
+            subheading?:
+              | {
+                  content: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'hero';
+          }
       )[]
     | null;
-  body: {
-    root: {
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      type: string;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
   meta?:
     | {
         type?: string | null;
@@ -160,6 +173,20 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footerLinks".
+ */
+export interface FooterLink {
+  id: string;
+  items: {
+    label: string;
+    link: string;
+    id?: string | null;
+  }[];
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

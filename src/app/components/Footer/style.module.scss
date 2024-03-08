@@ -1,0 +1,68 @@
+@use "../../../../node_modules/open-color/open-color" as c;
+
+.foot {
+  background: var(--pico-code-background-color);
+  margin-top: calc(2 * var(--pico-spacing));
+  padding-top: calc(2 * var(--pico-spacing));
+  padding-bottom: calc(2 * var(--pico-spacing));
+
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+
+    > span {
+      flex: 1 1 0;
+      gap: 32px;
+    }
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  img {
+    margin-top: calc(0.5 * var(--pico-spacing));
+    width: 6rem;
+    height: 6rem;
+    padding: 0.8rem;
+    border-radius: 3rem;
+    color: var(--pico-color);
+    background: linear-gradient(
+      300deg,
+      c.$oc-blue-9,
+      5%,
+      c.$oc-cyan-6,
+      15%,
+      c.$oc-teal-6,
+      45%,
+      c.$oc-green-4,
+      90%,
+      c.$oc-yellow-3
+    );
+  }
+}
+
+.foot span:nth-child(2) {
+  text-align: center;
+}
+
+.foot span:nth-child(3) {
+  text-align: right;
+}
+
+@media screen and (max-width: 767px) {
+  .foot span:nth-child(2) {
+    text-align: right;
+  }
+
+  .foot span:nth-child(3) {
+    flex-basis: 100%;
+    text-align: right;
+    position: relative;
+    top: -80px;
+  }
+}

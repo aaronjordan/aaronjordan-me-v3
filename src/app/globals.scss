@@ -1,0 +1,82 @@
+@import "./base";
+@import "./colors";
+
+:root {
+  --content-lane-width: min(100%, 42rem);
+  --content-lane-inner-width: calc(
+    var(--content-lane-width) - var(--content-lane-total-padding)
+  );
+  --icon-size-sm: 0.9rem;
+  --icon-size-md: 1.2rem;
+  --icon-size-lg: 1.4rem;
+
+  --content-lane-total-padding: calc(2 * var(--pico-block-spacing-horizontal));
+}
+
+* {
+  transition-duration: 0.25s;
+  transition-property: background-color, border-color, color;
+  transition-timing-function: ease-out;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  --pico-font-family: var(--body-font-family),
+    var(--pico-font-family-sans-serif), sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+footer {
+  margin-top: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font-family);
+  font-weight: 500;
+}
+
+a[target="_blank"] svg {
+  margin-left: 0.2rem;
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+}
+
+svg {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+
+  &.baseline {
+    margin-bottom: 0.1rem;
+  }
+}
+
+main > article {
+  background: unset;
+  box-shadow: unset;
+}
+
+article > :last-child,
+section > :last-child {
+  margin-bottom: 0;
+}
+
+.container {
+  width: var(--content-lane-width);
+}
+
+/* Overrides a :where(:root) in pico.  */
+:where(body) {
+  font-family: var(--pico-font-family);
+}

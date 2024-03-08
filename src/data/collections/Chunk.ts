@@ -1,6 +1,8 @@
 import { lexicalHTML } from "@payloadcms/richtext-lexical";
-import { Carousel } from "../blocks/Carousel";
 import { CollectionConfig } from "payload/types";
+import { Carousel } from "../blocks/Carousel";
+import { CodeSnippet } from "../blocks/CodeSnippet";
+import { Hero } from "../blocks/Hero";
 import { semanticDivElement } from "../utils/GenericFields";
 
 export const Chunk: CollectionConfig = {
@@ -34,15 +36,14 @@ export const Chunk: CollectionConfig = {
             { type: "richText", name: "text" },
             lexicalHTML("text", { name: "html" }),
           ],
+          // TODO: use kebab-case
+          // https://payloadcms.com/docs/rest-api/overview#collections
           slug: "richText",
         },
         Carousel,
+        CodeSnippet,
+        Hero,
       ],
-    },
-    {
-      name: "body",
-      type: "richText",
-      required: true,
     },
     {
       name: "meta",

@@ -19,6 +19,10 @@ export const Carousel: Block = {
           required: true,
         },
         {
+          name: "caption",
+          type: "text",
+        },
+        {
           name: "initial",
           type: "checkbox",
           label: "Show this image first",
@@ -26,5 +30,4 @@ export const Carousel: Block = {
       ],
     },
   ],
-  // admin: { useAsTitle: "name" },
 };
