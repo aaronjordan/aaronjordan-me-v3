@@ -11,6 +11,7 @@
   --icon-size-lg: 1.4rem;
 
   --content-lane-total-padding: calc(2 * var(--pico-block-spacing-horizontal));
+  --pico-block-spacing-vertical: calc(2 * var(--pico-spacing));
 }
 
 * {
@@ -31,6 +32,10 @@ body {
   flex-direction: column;
   min-height: 100%;
   overflow-x: hidden;
+}
+
+.canvas {
+  overflow-x: clip;
 }
 
 footer {
@@ -67,6 +72,10 @@ main > article {
   box-shadow: unset;
 }
 
+article > * {
+  margin-bottom: var(--pico-block-spacing-vertical);
+}
+
 article > :last-child,
 section > :last-child {
   margin-bottom: 0;
@@ -76,7 +85,26 @@ section > :last-child {
   width: var(--content-lane-width);
 }
 
-/* Overrides a :where(:root) in pico.  */
+// Overrides a :where(:root) in pico.
 :where(body) {
   font-family: var(--pico-font-family);
+}
+
+// Overrides styles on an element from `brighter`.
+div[data-bright-theme] {
+  border-radius: var(--pico-border-radius) !important;
+  box-shadow: var(--pico-box-shadow);
+  overflow: hidden;
+
+  pre {
+    -webkit-text-size-adjust: 100%;
+    padding: 0 !important;
+  }
+
+  div + pre {
+    border-radius: 0;
+  }
+}
+
+.sr-only {
 }

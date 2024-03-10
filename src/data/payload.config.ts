@@ -15,6 +15,7 @@ import { imageAdapter } from "./adapters/buckets";
 import { Popover, PopoverConverter } from "./blocks/Popover";
 import { Chunk } from "./collections/Chunk";
 import { Image } from "./collections/Image";
+import { TextSnippet } from "./collections/TextSnippet";
 import { FooterLinks } from "./globals/FooterLinks";
 import { Navigation } from "./globals/Navigation";
 
@@ -25,6 +26,7 @@ export default buildConfig({
   collections: [
     Chunk,
     Image,
+    TextSnippet,
   ],
   db: mongooseAdapter({ url: process.env.DATABASE_URI }),
   editor: lexicalEditor({

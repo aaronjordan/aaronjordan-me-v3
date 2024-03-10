@@ -1,7 +1,8 @@
+import { cookies } from "next/headers";
 import { getPayloadClient } from "$app/payload.server";
-import { HeaderControls } from "../HeaderControls";
+import { THEME_COOKIE_NAME } from "$app/utils/constants";
+import { Navigation } from "../Navigation";
 import styles from "./style.module.scss";
-import { usePathname } from "next/navigation";
 
 export async function Header() {
   const payload = await getPayloadClient();
@@ -19,22 +20,21 @@ export async function Header() {
             </a>
           </li>
         </ul>
-        <ul className={styles.controls}>
-          {links.items.map((link) => (
-            <li key={link.id}>
-              <a
-                href={link.route}
-                // TODO: Is it worth adding this? Need to resolve path somehow.
-                // aria-current={path.startsWith(link.route) ? "page" : null}
-              >
-                {link.title}
-              </a>
-            </li>
-          ))}
-          <li className={styles.separator} />
-          <HeaderControls />
-        </ul>
+        <Navigation links={links.items} theme={initialSiteTheme()} />
       </nav>
     </header>
   );
+}
+
+/**
+ * Reads the current theme applied to the document, returning the default theme
+ * if the user tampered with the page.
+ *
+ * Uses different stategies for SSR and CSR.
+ *
+ * @returns {SiteThemeKeyword} the current theme
+ */
+function initialSiteTheme() {
+  const current = cookies().get(THEME_COOKIE_NAME)?.value;
+  return current === "dark" ? "dark" : "light";
 }

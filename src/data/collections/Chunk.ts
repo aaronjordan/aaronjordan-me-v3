@@ -1,5 +1,6 @@
 import { lexicalHTML } from "@payloadcms/richtext-lexical";
 import { CollectionConfig } from "payload/types";
+import { Card } from "../blocks/Card";
 import { Carousel } from "../blocks/Carousel";
 import { CodeSnippet } from "../blocks/CodeSnippet";
 import { Hero } from "../blocks/Hero";
@@ -40,6 +41,7 @@ export const Chunk: CollectionConfig = {
           // https://payloadcms.com/docs/rest-api/overview#collections
           slug: "richText",
         },
+        Card,
         Carousel,
         CodeSnippet,
         Hero,

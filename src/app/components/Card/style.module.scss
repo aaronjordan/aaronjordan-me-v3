@@ -1,0 +1,50 @@
+.card {
+  --pico-block-spacing-vertical: var(--pico-spacing);
+}
+
+.header {
+  display: flex;
+  gap: var(--pico-spacing);
+  align-items: stretch;
+}
+
+section > .header {
+  padding-bottom: calc(0.5 * var(--pico-spacing));
+  border-bottom: 1px solid var(--oc-neutral-background-hover);
+  margin-bottom: calc(0.5 * var(--pico-spacing));
+}
+
+.image {
+  display: none;
+  width: min(15%, 6rem);
+  height: auto;
+  padding: calc(0.5 * var(--pico-spacing));
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h1 {
+    font-size: 1.6rem;
+
+    span {
+      display: block;
+
+      &:last-child {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .image {
+    display: block;
+  }
+}

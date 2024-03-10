@@ -4,24 +4,29 @@ import { useState } from "react";
 import { IconButton } from "../IconButton";
 import { SunIcon } from "@radix-ui/react-icons";
 import { MoonIcon } from "$app/utils/MoonIcon";
-import { setThemePreference } from "$app/utils/siteTheme";
+import { SiteThemeKeyword, setThemePreference } from "$app/utils/siteTheme";
 
-export function HeaderControls(props) {
-  // TODO: read the init state from da cookie
-  const [isLightMode, setLightMode] = useState(true);
+interface HeaderControlProps {
+  filledButtons?: boolean;
+  initialTheme: SiteThemeKeyword;
+}
 
-  const toggleSiteTheme = () => {
-    const next = updateSiteTheme();
-    setLightMode(next);
+export function HeaderControls(props: HeaderControlProps) {
+  const [theme, setTheme] = useState(props.initialTheme);
+
+  const toggle = () => {
+    const next = toggleSiteTheme();
+    setTheme(next);
   };
 
   return (
     <>
-      <li style={{ display: "flex" }}>
+      <li className="button" style={{ display: "flex" }}>
         <IconButton
           ariaLabel="Toggle theme"
-          icon={isLightMode ? <MoonIcon /> : <SunIcon />}
-          onClick={toggleSiteTheme}
+          filled={props.filledButtons ?? false}
+          icon={theme === "light" ? <MoonIcon /> : <SunIcon />}
+          onClick={toggle}
         />
       </li>
     </>
@@ -33,13 +38,14 @@ export function HeaderControls(props) {
  * With the theme managed by PicoCSS, React doesn't really need to know much
  * about the active theme.
  *
- * @returns {boolean} true if the site has switched into light mode.
+ * @returns the new theme keyword.
  */
-function updateSiteTheme(): boolean {
+function toggleSiteTheme(): SiteThemeKeyword {
   const html = document.querySelector("html");
   const current = html.getAttribute("data-theme");
-  const isLight = current == "light";
-  html.setAttribute("data-theme", isLight ? "dark" : "light");
-  setThemePreference(!isLight);
-  return !isLight;
+  const isLight = current === "light";
+  const newKeyword = isLight ? "dark" : "light";
+  html.setAttribute("data-theme", newKeyword);
+  setThemePreference(newKeyword);
+  return newKeyword;
 }

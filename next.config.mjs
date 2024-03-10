@@ -10,6 +10,12 @@ const nextConfig = {
         port: "3000",
         pathname: "/image/**",
       },
+      {
+        // TODO: remove
+        protocol: "https",
+        hostname: "placehold.co",
+        pathname: "/**",
+      },
     ],
   },
 };

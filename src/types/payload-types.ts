@@ -10,6 +10,7 @@ export interface Config {
   collections: {
     chunk: Chunk;
     image: Image;
+    'text-snippet': TextSnippet;
     users: User;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -53,6 +54,22 @@ export interface Chunk {
             blockType: 'richText';
           }
         | {
+            title?: string | null;
+            subtitle?: string | null;
+            extras?:
+              | {
+                  content?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            icon?: (string | null) | Image;
+            body?: (string | null) | TextSnippet;
+            container: 'article' | 'section';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'card';
+          }
+        | {
             name: string;
             images?:
               | {
@@ -88,6 +105,7 @@ export interface Chunk {
                   id?: string | null;
                 }[]
               | null;
+            image: string | Image;
             id?: string | null;
             blockName?: string | null;
             blockType: 'hero';
@@ -122,6 +140,31 @@ export interface Image {
   filesize?: number | null;
   width?: number | null;
   height?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "text-snippet".
+ */
+export interface TextSnippet {
+  id: string;
+  text?: {
+    root: {
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      type: string;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  html?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -25,5 +25,11 @@ export const Hero: Block = {
         },
       ],
     },
+    {
+      name: "image",
+      type: "relationship",
+      relationTo: "image",
+      required: true,
+    },
   ],
 };

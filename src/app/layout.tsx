@@ -6,6 +6,7 @@ import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { THEME_COOKIE_NAME } from "./utils/constants";
 import "./globals.scss";
+import "./sr-only.css";
 
 const fig = Figtree({ subsets: ["latin"], variable: "--body-font-family" });
 const vol = Vollkorn({ subsets: ["latin"], variable: "--heading-font-family" });
@@ -30,8 +31,7 @@ export default function RootLayout({
     <html className={vars} data-theme={themeOrNull?.value ?? "light"} lang="en">
       <body>
         <Header />
-
-        {children}
+        <div className="canvas">{children}</div>
         <Footer />
       </body>
     </html>

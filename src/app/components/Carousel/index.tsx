@@ -3,7 +3,7 @@
 import { Carousel as ArkCarousel } from "@ark-ui/react";
 import { useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
-import { Chunk, Image } from "$types/payload-types";
+import { Chunk } from "$types/payload-types";
 import style from "./style.module.scss";
 import { IconButton } from "../IconButton";
 
@@ -25,6 +25,7 @@ export function Carousel({ src }: CarouselProps) {
       asChild
     >
       <figure>
+        {src.name && <h3>{src.name}</h3>}
         <div>
           <ArkCarousel.Viewport>
             <ArkCarousel.ItemGroup>
@@ -59,7 +60,11 @@ export function Carousel({ src }: CarouselProps) {
             </ArkCarousel.NextTrigger>
           </ArkCarousel.Control>
         </div>
-        <figcaption>{src.images[currentIndex].caption}</figcaption>
+        {src.images[currentIndex].caption ? (
+          <figcaption>{src.images[currentIndex].caption}</figcaption>
+        ) : (
+          <></>
+        )}
       </figure>
     </ArkCarousel.Root>
   );

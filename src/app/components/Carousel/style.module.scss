@@ -1,6 +1,17 @@
 .carousel {
+  h3 {
+    padding: calc(0.25 * var(--pico-spacing)) calc(0.5 * var(--pico-spacing)) 0;
+    margin-bottom: calc(0.25 * var(--pico-spacing));
+  }
+
   div {
     position: relative;
+  }
+
+  figcaption {
+    padding: calc(0.5 * var(--pico-spacing));
+    padding-bottom: 0;
+    text-align: center;
   }
 
   [data-part="control"] {
@@ -36,8 +47,8 @@
 @media screen and (min-width: 900px) {
   .carousel {
     [data-part="control"] {
-      width: 115%;
-      margin-left: -7.5%;
+      width: 116%;
+      margin-left: -8%;
       transform: translateY(-50%);
       opacity: 1;
     }

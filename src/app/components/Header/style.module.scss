@@ -2,6 +2,7 @@
 
 .head {
   position: sticky;
+  overflow: hidden;
   z-index: 10;
   top: 0;
   padding: calc(0.25 * var(--pico-spacing)) 0;
@@ -35,22 +36,4 @@
     70%,
     c.$oc-blue-9
   );
-}
-
-li:has(+ .separator) {
-  padding-right: 4px;
-}
-
-.separator {
-  padding: 0;
-  margin: 0 var(--pico-spacing);
-  border-right: 1px solid var(--pico-muted-border-color);
-
-  + li {
-    padding-left: 0;
-  }
-}
-
-.controls li:last-child {
-  padding-right: 0;
 }

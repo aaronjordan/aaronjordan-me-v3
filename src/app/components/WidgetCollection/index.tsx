@@ -1,12 +1,13 @@
 import React from "react";
-import { Code } from "bright";
 
-import { Chunk } from "$types/payload-types";
+import { cookies } from "next/headers";
+import { Chunk, Image } from "$types/payload-types";
+import { THEME_COOKIE_NAME } from "$app/utils/constants";
+import { Card } from "../Card";
+import { Carousel } from "../Carousel";
+import { CodeSnippet } from "../CodeSnippet";
 import { Hero } from "../Hero";
 import { PortalRuntime } from "../PortalRuntime";
-import { Carousel } from "../Carousel";
-import { cookies } from "next/headers";
-import { THEME_COOKIE_NAME } from "$app/utils/constants";
 
 type ContentBlock = Chunk["content"][number];
 
@@ -44,20 +45,20 @@ function Widget({ src }: { src: ContentBlock }) {
         </>
       );
     case "hero":
-      return <Hero heading={src.heading} subhead={src.subheading} />;
+      return (
+        <Hero
+          heading={src.heading}
+          subhead={src.subheading}
+          image={src.image as Image}
+        />
+      );
     case "carousel":
       return <Carousel src={src} />;
     case "code-snippet":
       const keyword = cookies().get(THEME_COOKIE_NAME)?.value;
-      Code.theme = keyword === "light" ? "github-light" : "github-dark-dimmed";
-      return (
-        <Code
-          lang={src.lang}
-          lineNumbers={src.lineNumbers}
-          title={src.filename}
-        >
-          {src.snippet}
-        </Code>
-      );
+      const theme = keyword === "light" ? "github-light" : "github-dark-dimmed";
+      return <CodeSnippet src={src} theme={theme} />;
+    case "card":
+      return <Card src={src} />;
   }
 }

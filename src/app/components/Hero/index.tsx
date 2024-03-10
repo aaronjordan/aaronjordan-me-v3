@@ -1,9 +1,11 @@
 import Image from "next/image";
 import styles from "./style.module.scss";
+import { Image as PayloadImage } from "$types/payload-types";
 
 interface HeroProps {
   heading: { content: string; id?: string }[];
   subhead: { content: string; id?: string }[];
+  image: PayloadImage;
 }
 
 export async function Hero(props: HeroProps) {
@@ -23,8 +25,8 @@ export async function Hero(props: HeroProps) {
       </div>
       <div className={styles.background}>
         <Image
-          src="http://localhost:3000/image/yosemite-15-high.jpg"
-          alt="TODO"
+          src={props.image.url}
+          alt={props.image.alt}
           width={1920}
           height={1080}
           priority

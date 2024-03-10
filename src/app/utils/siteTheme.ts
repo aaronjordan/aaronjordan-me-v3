@@ -3,6 +3,8 @@
 import { cookies } from "next/headers";
 import { THEME_COOKIE_NAME } from "./constants";
 
-export async function setThemePreference(isLightMode: boolean) {
-  cookies().set(THEME_COOKIE_NAME, isLightMode ? "light" : "dark");
+export type SiteThemeKeyword = "light" | "dark";
+
+export async function setThemePreference(themeKeyword: SiteThemeKeyword) {
+  cookies().set(THEME_COOKIE_NAME, themeKeyword);
 }

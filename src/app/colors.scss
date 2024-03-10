@@ -14,11 +14,16 @@
   --pico-primary-focus: #{color.adjust(c.$oc-teal-6, $alpha: -0.5)};
   --pico-primary-inverse: #fff;
 
+  // Grays
+  --pico-color: #{c.$oc-gray-7};
+  --oc-neutral-background: #{c.$oc-gray-1};
+  --oc-neutral-background-hover: #{c.$oc-gray-3};
+
   // Others
   --pico-modal-overlay-background-color: #{color.adjust(
       c.$oc-teal-9,
-      $saturation: -60,
-      $alpha: -0.6
+      $saturation: -55,
+      $alpha: -0.5
     )};
 }
 
@@ -34,10 +39,16 @@
   --pico-primary-focus: #{color.adjust(c.$oc-teal-9, $alpha: -0.3)};
   --pico-primary-inverse: #fff;
 
+  // Grays
+  --pico-color: #{c.$oc-gray-4};
+  --oc-neutral-background: #{c.$oc-gray-9};
+  --oc-neutral-background-hover: #{c.$oc-gray-8};
+
   // Others
   --pico-modal-overlay-background-color: #{color.adjust(
       c.$oc-teal-9,
-      $saturation: -60,
-      $alpha: -0.6
+      $saturation: -55,
+      $alpha: -0.5
     )};
+  --pico-muted-color: #{c.$oc-gray-6};
 }
