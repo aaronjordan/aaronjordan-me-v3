@@ -24,7 +24,7 @@ export const getOrCreatePayloadClient = (
       const runtime = await payload.init({
         ...config,
         express: server,
-        secret: "1234",
+        secret: process.env.PAYLOAD_SECRET,
       });
       shared.runtime = runtime;
       delete shared.promise;

@@ -25,9 +25,19 @@ export async function Footer() {
           </ul>
         </span>
         <span>
-          <p>
-            Made with <HeartIcon className="baseline" /> and NextJS.
+          <p style={{ marginBottom: "0.25rem" }}>
+            Made with <HeartIcon className="baseline" /> and{" "}
+            <a
+              href="https://nextjs.org/"
+              target="_blank"
+              rel="noopener noreferer"
+            >
+              NextJS.
+            </a>
           </p>
+          <small>
+            Check it out on <a href="">GitHub!</a>
+          </small>
         </span>
         <span>
           <Image src="/aj.svg" alt="AJ initials" width={100} height={100} />

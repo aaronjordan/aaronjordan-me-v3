@@ -17,6 +17,16 @@ export const metadata: Metadata = {
   description:
     "Hey there! I'm Aaron Jordan. I make software that users " +
     "and developers love.",
+  metadataBase: new URL(process.env.HOSTNAME),
+  openGraph: {
+    title: "Aaron Jordan",
+    description: "The React Framework for the Web",
+    url: process.env.HOSTNAME,
+    siteName: "aaronjordan.me",
+    images: "/homepage.png",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
