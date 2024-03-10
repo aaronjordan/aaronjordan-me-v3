@@ -5,8 +5,12 @@
   "scripts": {
     "dev": "cross-env PAYLOAD_CONFIG_PATH=src/data/payload.config.ts nodemon",
     "types": "cd src/data && payload generate:types",
-    "build": "next build",
-    "start": "next start",
+    "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/data/payload.config.ts payload build",
+    "build:server": "tsc --project tsconfig.server.json",
+    "build:next": "cross-env PAYLOAD_CONFIG_PATH=dist/data/payload.config.js next build",
+    "build": "cross-env NODE_ENV=production npm run build:payload && npm run build:server && npm run copyfiles && npm run build:next",
+    "serve": "cross-env PAYLOAD_CONFIG_PATH=dist/data/payload.config.js NODE_ENV=production node dist/server.js",
+    "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png}\" dist/",
     "lint": "next lint",
     "test": "vitest"
   },
@@ -41,6 +45,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@vitejs/plugin-react": "^4.2.1",
+    "copyfiles": "^2.4.1",
     "cross-env": "^7.0.3",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
