@@ -35,6 +35,8 @@ body {
 }
 
 .canvas {
+  position: relative;
+  flex-grow: 1;
   overflow-x: clip;
 }
 
@@ -103,6 +105,22 @@ div[data-bright-theme] {
 
   div + pre {
     border-radius: 0;
+  }
+}
+
+.page-error {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  > :first-child {
+    font-weight: 500;
+    font-size: 1.3rem;
   }
 }
 
