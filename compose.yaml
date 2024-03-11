@@ -1,0 +1,43 @@
+version: "3.1"
+
+# Comments are provided throughout this file to help you get started.
+# If you need more help, visit the Docker compose reference guide at
+# https://docs.docker.com/compose/compose-file/
+
+# Here the instructions define your application as a service called "server".
+# This service is built from the Dockerfile in the current directory.
+# You can add other services your application may depend on here, such as a
+# database or a cache. For examples, see the Awesome Compose repository:
+# https://github.com/docker/awesome-compose
+services:
+  server:
+    build:
+      context: .
+    environment:
+      NODE_ENV: production
+      DATABASE_URI: mongodb://root:example@db:27017/
+      S3_ACCESS_ID: payload
+      S3_ACCESS_SECRET: payloadcms
+      S3_ENDPOINT: http://prod.jordans.casa:9000
+      S3_IMAGE_BUCKET: payload
+      S3_REGION: apk-home
+      HOSTNAME: https://aaronjordan.me
+      PAYLOAD_SECRET: 1234
+    ports:
+      - 3000:3000
+    volumes:
+      - ./public:/web/public
+      - ./.env:/web/.env
+    depends_on:
+      - db
+
+  db:
+    image: mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+networks:
+  golfers:
+    external: true
