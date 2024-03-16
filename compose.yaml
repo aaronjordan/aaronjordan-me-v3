@@ -17,8 +17,9 @@ services:
       NODE_ENV: production
     env_file:
       - .env.docker
-    ports:
-      - 3000:3000
+    networks:
+      - golfers
+      - link
     volumes:
       - ./public:/web/public
       - ./.env.docker:/web/.env
@@ -30,12 +31,15 @@ services:
     restart: unless-stopped
     env_file:
       - .env.docker
+    networks:
+      - link
     volumes:
       - mongodb:/data/db
 
 networks:
   golfers:
     external: true
+  link:
 
 volumes:
   mongodb:
