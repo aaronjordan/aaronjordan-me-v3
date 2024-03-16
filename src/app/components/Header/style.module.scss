@@ -37,10 +37,14 @@
     c.$oc-blue-9
   );
   filter: hue-rotate(0deg);
-  transition: filter 1.5s ease;
+  transition: filter 0.75s ease;
 
   &:focus,
   &:hover {
-    filter: hue-rotate(-75deg);
+    filter: hue-rotate(-85deg);
+  }
+
+  &:focus {
+    outline: 1px solid var(--pico-primary-underline);
   }
 }

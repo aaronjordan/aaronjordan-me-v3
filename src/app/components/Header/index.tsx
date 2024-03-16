@@ -3,6 +3,7 @@ import { getPayloadClient } from "$app/payload.server";
 import { THEME_COOKIE_NAME } from "$app/utils/constants";
 import { Navigation } from "../Navigation";
 import styles from "./style.module.scss";
+import Link from "next/link";
 
 export async function Header() {
   const payload = await getPayloadClient();
@@ -13,11 +14,11 @@ export async function Header() {
       <nav className="container">
         <ul>
           <li>
-            <a className={styles.logo} href="/">
+            <Link className={styles.logo} href="/">
               <span className={styles.first}>aaron</span>
               <span className={styles.last}>jordan</span>
               <span className={styles.tld}>.me</span>
-            </a>
+            </Link>
           </li>
         </ul>
         <Navigation links={links.items} theme={initialSiteTheme()} />
