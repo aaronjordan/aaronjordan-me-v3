@@ -36,4 +36,11 @@
     70%,
     c.$oc-blue-9
   );
+  filter: hue-rotate(0deg);
+  transition: filter 1.5s ease;
+
+  &:focus,
+  &:hover {
+    filter: hue-rotate(-75deg);
+  }
 }

@@ -13,7 +13,7 @@ export const imageAdapter = s3Adapter({
       secretAccessKey: process.env.S3_ACCESS_SECRET,
     },
     endpoint: process.env.S3_ENDPOINT,
-    forcePathStyle: true,
+    forcePathStyle: process.env.S3_ENDPOINT === "true",
     region: process.env.S3_REGION,
   },
 });

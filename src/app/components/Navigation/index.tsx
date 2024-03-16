@@ -12,6 +12,7 @@ import { Navigation as PayloadNav } from "$types/payload-types";
 import { HeaderControls } from "../HeaderControls";
 import { IconButton } from "../IconButton";
 import styles from "./style.module.scss";
+import Link from "next/link";
 
 interface NavigationProps {
   links: PayloadNav["items"];
@@ -75,6 +76,11 @@ function DialogNavigation(props: DialogNavigationProps) {
   const initialFocusElement = React.useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
+    // Close on navigation to a new route.
+    if (props.open) props.onClose();
+  }, [path]);
+
+  useEffect(() => {
     // Close if the window is resized to desktop.
     if (isDesktop && props.open) props.onClose();
   }, [isDesktop]);
@@ -87,7 +93,10 @@ function DialogNavigation(props: DialogNavigationProps) {
   return (
     <FocusTrap active={props.open}>
       <dialog open={props.open}>
-        <nav className={styles.dialog}>
+        <nav
+          className={styles.dialog}
+          onClick={(e) => e.target === e.currentTarget && props.onClose()}
+        >
           <ul>
             <div className={styles.icons}>
               <HeaderControls filledButtons initialTheme={props.theme} />
@@ -96,19 +105,19 @@ function DialogNavigation(props: DialogNavigationProps) {
                   ariaLabel="Close dialog"
                   filled
                   icon={<Cross2Icon />}
-                  onClick={() => props.onClose()}
+                  onClick={props.onClose}
                   ref={initialFocusElement}
                 />
               </li>
             </div>
             {props.links.map((link) => (
               <li key={link.id}>
-                <a
+                <Link
                   aria-current={path.startsWith(link.route) ? "page" : null}
                   href={link.route}
                 >
                   {link.title}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

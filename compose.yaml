@@ -21,7 +21,7 @@ services:
       - 3000:3000
     volumes:
       - ./public:/web/public
-      - ./.env:/web/.env
+      - ./.env.docker:/web/.env
     depends_on:
       - db
 

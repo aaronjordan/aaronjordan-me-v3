@@ -36,7 +36,14 @@ export async function Footer() {
             </a>
           </p>
           <small>
-            Check it out on <a href="">GitHub!</a>
+            Check it out on{" "}
+            <a
+              href="https://github.com/aaronjordan/aaronjordan-me-v3"
+              target="_blank"
+              rel="noopener noreferer"
+            >
+              GitHub!
+            </a>
           </small>
         </span>
         <span>
